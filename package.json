@@ -1,0 +1,25 @@
+{
+  "name": "protractor-cucumber-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "conf.js",
+  "dependencies": {
+      "cucumber": "0.10.4",
+      "protractor": "3.3.0",
+      "protractor-cucumber-framework": "0.5.0",
+      "chai": "3.5.0",
+      "chai-as-promised": "5.3.0"
+    },
+  "devDependencies": {
+    "cucumber-html-report": "0.3.0",
+    "cucumber-junit": "1.5.0"
+    },
+  "scripts": {
+    "test": "./node_modules/.bin/protractor conf.js"
+  },
+  "author": {
+    "email": "andyrbell@gmail.com",
+    "name": "Andy Bell"
+  },
+  "license": "MIT"
+}
