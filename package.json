@@ -11,8 +11,10 @@
       "chai-as-promised": "5.3.0"
     },
   "devDependencies": {
-    "cucumber-html-report": "0.3.0",
-    "cucumber-junit": "1.5.0"
+    "cucumber-html-report": "0.3.5",
+    "cucumber-junit": "1.5.0",
+    "gulp-protractor-cucumber-html-report": "0.1.0",
+    "vinyl": "^1.1.0"
     },
   "scripts": {
     "test": "./node_modules/.bin/protractor conf.js"

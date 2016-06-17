@@ -3,6 +3,8 @@ var CucumberHtmlReport = require('cucumber-html-report');
 var Cucumber = require('cucumber');
 var fs = require('fs');
 var CucumberJunit = require('cucumber-junit');
+var reporter = require('gulp-protractor-cucumber-html-report');
+var File = require('vinyl');
 
 module.exports = function() {
 
@@ -34,7 +36,21 @@ module.exports = function() {
     var report = CucumberJunit(inputJson);
     var outputFile = outputDir + 'junit_results.xml';
     fs.writeFileSync(outputFile, report);
-  }
+  };
+
+  var createProtractorHtmlReport = function(sourceJson) {
+    var inputJson = fs.readFileSync(sourceJson);
+    var jsonFile = new File({
+        contents: inputJson,
+        path: sourceJson
+      });
+    var reportStream = reporter({
+      dest: outputDir
+    });
+
+    reportStream.write(jsonFile);
+    reportStream.end();
+  };
 
   var JsonFormatter = Cucumber.Listener.JsonFormatter();
   JsonFormatter.log = function(string) {
@@ -50,6 +66,7 @@ module.exports = function() {
       } else {
         createHtmlReport(targetJson);
         createJunitXmlReport(targetJson);
+        createProtractorHtmlReport(targetJson);
       }
     });
   };
